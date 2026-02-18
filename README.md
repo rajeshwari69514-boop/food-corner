@@ -1,4 +1,168 @@
-# food-corner
+# coding
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Menu Table</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        h1 {
+            background-color: #e74c3c;
+            color: white;
+            padding: 15px;
+        }
+
+        table {
+            width: 85%;
+            margin: auto;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 10px;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        img {
+            width: 100px;
+            height: 80px;
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 5px 10px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkgreen;
+        }
+
+        .remove {
+            background-color: red;
+        }
+
+        .cart-box {
+            margin-top: 20px;
+            background: white;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>🍽️ Food Menu</h1>
+
+<table border="1">
+    <tr>
+        <th>Image</th>
+        <th>Food Item</th>
+        <th>Category</th>
+        <th>Price (₹)</th>
+        <th>Action</th>
+    </tr>
+
+    <tr>
+        <td><img src="paneer.jpg"></td>
+        <td>Paneer Butter Masala</td>
+        <td>Veg</td>
+        <td>180</td>
+        <td><button onclick="addToCart('Paneer Butter Masala',180)">Add</button></td>
+    </tr>
+
+    <tr>
+        <td><img src="Biryani.jpg"></td>
+        <td>Chicken Biryani</td>
+        <td>Non-Veg</td>
+        <td>220</td>
+        <td><button onclick="addToCart('Chicken Biryani',220)">Add</button></td>
+    </tr>
+
+    <tr>
+        <td><img src="dosa.jpg"></td>
+        <td>Masala Dosa</td>
+        <td>Veg</td>
+        <td>90</td>
+        <td><button onclick="addToCart('Masala Dosa',90)">Add</button></td>
+    </tr>
+
+    <tr>
+        <td><img src="icecream.jpg"></td>
+        <td>Chocolate Ice Cream</td>
+        <td>Dessert</td>
+        <td>80</td>
+        <td><button onclick="addToCart('Chocolate Ice Cream',80)">Add</button></td>
+    </tr>
+
+</table>
+
+<div class="cart-box">
+    <h2>🛒 Cart</h2>
+    <ul id="cartItems"></ul>
+    <h3>Total: ₹<span id="totalPrice">0</span></h3>
+</div>
+
+<script>
+let cart = [];
+let total = 0;
+
+function addToCart(name, price) {
+    cart.push({name, price});
+    total += price;
+    displayCart();
+}
+
+function displayCart() {
+    let list = document.getElementById("cartItems");
+    list.innerHTML = "";
+
+    cart.forEach((item, index) => {
+        list.innerHTML += `<li>
+            ${item.name} - ₹${item.price}
+            <button class="remove" onclick="removeItem(${index})">Remove</button>
+        </li>`;
+    });
+
+    document.getElementById("totalPrice").innerText = total;
+}
+
+function removeItem(index) {
+    total -= cart[index].price;
+    cart.splice(index, 1);
+    displayCart();
+}
+</script>
+
+</body>
+</html>
+
+# food corner
+<img width="1703" height="855" alt="image" src="https://github.com/user-attachments/assets/676ac376-d8ed-4d8c-94f0-47fe8f384b3c" />
+
+
 
 
 # output
